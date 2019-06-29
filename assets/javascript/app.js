@@ -4,14 +4,25 @@ var myFunction = function () {
     var myImages = ["Titanic", "Frozen", "Transformers", "Stripes"]
     console.log(myImages);
     myImages.forEach(function (element, i) {
-        $("#buttons").append("<button data-movie="+ myImages[i] + ">" + myImages[i] + "</button>");
+        $("#buttons").append("<button class='movies' data-movie="+ myImages[i] + ">" + myImages[i] + "</button>");
     
     });
 
+    $("#creatMovieButton").click(function(){
+        var newButton = $("#newMovie").val();
+        myImages.push(newButton);
+        $("#buttons").empty();
+        myImages.forEach(function (element, i) {
+            $("#buttons").append("<button class='movies' data-movie="+ myImages[i] + ">" + myImages[i] + "</button>");
+        
+        });
 
+
+    })
  
-   $("button").on("click", function() {
-    console.log(this);
+   $(".movies").on("click", function() {
+    
+    console.log("Button Pressed")
     $("#gifs-appear-here").empty();
 
     var movie = $(this).attr("data-movie");
@@ -23,7 +34,7 @@ var myFunction = function () {
       })
         .then(function(response) {  
             var results = response.data;
-            console.log(results);
+           
 
           for (var i = 0; i < results.length; i++) {
             var gifDiv = $("<div>");
