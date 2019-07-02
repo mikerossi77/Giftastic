@@ -16,8 +16,6 @@ var myFunction = function () {
             $("#buttons").append("<button class='movies' data-movie="+ myImages[i] + ">" + myImages[i] + "</button>");
         
         });
-
-
     })
  
    $(".movies").on("click", function() {
@@ -48,7 +46,6 @@ var myFunction = function () {
 
   
             var movieImage = $("<img>");
-            console.log(results[i]);
             //movieImage.attr("state", "still");
             movieImage.attr("src", results[i].images.original_still.url);
             movieImage.attr("data-still", results[i].images.original_still.url);
